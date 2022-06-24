@@ -28,16 +28,6 @@ const SinglePost = ({ post }) => {
 }
 export default SinglePost
 
-export const getStaticPaths = async () => {
-  const rsp = await fetch(`${config.BASE_URL}/api/posts`)
-  const data = await rsp.json()
-  const paths = data.data?.map((res) => ({ params: { postId: res?.id?.toString() } }))
-
-  return {
-    paths,
-    fallback: true,
-  }
-}
 export async function getServerSideProps(context) {
   const {
     params: { postId },
@@ -49,6 +39,5 @@ export async function getServerSideProps(context) {
     props: {
       post: result?.data,
     },
-    revalidate: 10,
   }
 }
