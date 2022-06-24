@@ -20,7 +20,7 @@ const SinglePost = ({ post }) => {
           gap: '20px',
         }}>
         <Box sx={{ alignSelf: 'center', minWidth: '500px' }}>
-          <PostCard {...post?.attributes} id={post.id} />
+          <PostCard {...post?.attributes} id={post?.id} />
         </Box>
       </main>
     </div>
@@ -31,7 +31,7 @@ export default SinglePost
 export const getStaticPaths = async () => {
   const rsp = await fetch(`${config.BASE_URL}/api/posts`)
   const data = await rsp.json()
-  const paths = data.data?.map((res) => ({ params: { postId: res.id?.toString() } }))
+  const paths = data.data?.map((res) => ({ params: { postId: res?.id?.toString() } }))
 
   return {
     paths,
