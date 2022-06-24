@@ -28,7 +28,7 @@ const Posts = ({ posts }) => {
 
 export default Posts
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const rsp = await fetch(`${config.BASE_URL}/api/posts`)
 
   const result = await rsp.json()

@@ -38,7 +38,7 @@ export const getStaticPaths = async () => {
     fallback: true,
   }
 }
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const {
     params: { postId },
   } = context

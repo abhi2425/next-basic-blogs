@@ -17,7 +17,7 @@ export default function PostCard({ id, title, description, content, clickable, .
 
   React.useEffect(() => {
     const md = new MarkdownIt()
-    const htmlContent = md.render(content)
+    const htmlContent = md.render(content || '')
     setHtmlContent(htmlContent)
   }, [content])
 
@@ -37,6 +37,8 @@ export default function PostCard({ id, title, description, content, clickable, .
       setLoading(false)
     }
   }
+
+  if (!id) return <h2>Nothing to show here....</h2>
 
   return (
     <Card
